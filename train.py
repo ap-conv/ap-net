@@ -82,10 +82,10 @@ data_transforms = {
 }
 data_set = {}
 data_set['train'] = dataset(cfg,imgroot=rawdata_root,anno_pd=train_pd,
-                       aug_1=data_transforms["unswap"],swap=aug_2["swap"],totensor=data_transforms["totensor"],train=True
+                       aug_1=data_transforms["aug_1"],data_transforms=aug_2["aug_2"],totensor=data_transforms["totensor"],train=True
                        )
 data_set['val'] = dataset(cfg,imgroot=rawdata_root,anno_pd=test_pd,
-                       aug_1=data_transforms["None"],swap=aug_2["None"],totensor=data_transforms["valtotensor"],train=False
+                       aug_1=data_transforms["None"],data_transforms=aug_2["None"],totensor=data_transforms["valtotensor"],train=False
                        )
 dataloader = {}
 dataloader['train']=torch.utils.data.DataLoader(data_set['train'], batch_size=256,
